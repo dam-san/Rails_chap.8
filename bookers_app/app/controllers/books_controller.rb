@@ -3,20 +3,17 @@ class BooksController < ApplicationController
   def top
   end
   
-  def new
-  @book=Book.new
-  end
+  # def new
+  # @book=Book.new
+  # end
   
   def create
-    book=Book.new(book_params)
-    book.save
+    @book=Book.new(book_params)
+    if @book.save
+    redirect_to "/books/#{@book.id}"
+    else 
     redirect_to "/books"
-    
-    # if book.save
-    #   redirect_to "/books"
-    # else
-    #   # render 'layouts/error_messages', model: f.object 
-    # end
+    end
   end
   
   def index
@@ -25,6 +22,7 @@ class BooksController < ApplicationController
   end
   
   def show
+    # @book=Book.find(book_params)
     @book=Book.find(params[:id])
   end
   
