@@ -1,3 +1,10 @@
+
+
+
+<% if flash[:notice]%>
+    <%=flash[:notice]%>
+<%end%>
+
 <h1>Books</h1>
 
 <table>
@@ -24,10 +31,11 @@
 
 <h2>New books</h2>
 <!--newメソッドで生成した空のインスタンス-->
+  <!--<%= @book.errors.full_messages.each do |message|%>-->
+    error:<%= message%><br>
+  <!--<%end%>-->
 
-
-
-
+<!---->
 <%= form_with model:@book,url:"/books" ,local:true do |f| %>
 
   <h4>Title</h4>
